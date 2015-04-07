@@ -47,9 +47,26 @@ bool StartScene::init()
     sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
     sprite->setScale(visibleSize.width / POPSTARBG_WIDTH, visibleSize.height / POPSTARBG_HEIGHT);
     CCLOG("screen width:%f height%f", visibleSize.width, visibleSize.height);
-    
     // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
+    this->addChild(sprite, 1);
     
+    auto closeItem = MenuItemImage::create(
+                                           "00010.png",
+                                           "00010.png",
+                                           CC_CALLBACK_1(StartScene::onStartGame, this));
+    
+    closeItem->setPosition(Vec2(origin.x + visibleSize.width / 2 ,
+                                origin.y + visibleSize.height / 2));
+    
+    // create menu, it's an autorelease object
+    auto menu = Menu::create(closeItem, NULL);
+    menu->setPosition(Vec2::ZERO);
+    this->addChild(menu, 0);
+
     return true;
+}
+
+void StartScene::onStartGame(cocos2d::CCObject* obj)
+{
+    CCLOG("onStartGame");
 }

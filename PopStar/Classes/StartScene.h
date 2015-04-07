@@ -9,6 +9,8 @@
 #ifndef __PopStar__StartScene__
 #define __PopStar__StartScene__
 
+#include "cocos2d.h"
+
 class StartScene : public cocos2d::Layer
 {
 public:
@@ -20,6 +22,8 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(StartScene);
+    
+    void onStartGame(cocos2d::CCObject* obj);
 };
 
 
